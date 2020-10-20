@@ -28,6 +28,7 @@ public class CLConsumerLoop extends CLAbstractConsumerLoop {
      */
     @Override
     public void process(ConsumerRecord<String, String> record) {
+      logger.debug("Received message " + record.key() + " on topic " + record.topic() + " at offset " + record.offset());
       ICLMessage<String> msg = new CLMessage<String>(record.topic(), UUID.fromString(record.key()), record.value());
       logger.info("Received from " + record.topic() + " {key:" + msg.getUniqueId() + ", value: " + msg.getData().toString() + "}");
     }

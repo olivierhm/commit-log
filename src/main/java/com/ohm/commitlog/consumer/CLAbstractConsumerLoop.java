@@ -37,7 +37,7 @@ public abstract class CLAbstractConsumerLoop implements Runnable {
         consumer.subscribe(topics);
   
         while (true) {
-          ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(Long.MAX_VALUE));
+          ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
           records.forEach(record -> process(record));
         }
       } catch (WakeupException e) {

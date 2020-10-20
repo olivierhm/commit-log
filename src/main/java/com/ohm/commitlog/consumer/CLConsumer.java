@@ -29,11 +29,13 @@ public class CLConsumer {
 
         // TODO - Fetch those values from a resources file and override defaults as necessary
         Properties properties = new Properties();
-        properties.put("bootstrap.servers", KAFKA_SERVER_URL + ":" + KAFKA_SERVER_PORT);
-        properties.put("group.id", GROUP_ID);
-        properties.put("client.id", GROUP_ID + ".consumer");
-        properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        properties.setProperty("bootstrap.servers", KAFKA_SERVER_URL + ":" + KAFKA_SERVER_PORT);
+        properties.setProperty("group.id", GROUP_ID);
+        properties.setProperty("client.id", GROUP_ID + ".consumer");
+        properties.setProperty("enable.auto.commit", "true");
+        properties.setProperty("auto.commit.interval.ms", "1000");
+        properties.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        properties.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         
         final KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
 
