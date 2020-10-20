@@ -45,7 +45,7 @@ class CLProducerCallBack implements Callback {
 }
 
 public class CLProducerThread extends Thread {
-    private final static int MSG_NB = 100;
+    private final static int MSG_NB = 100;  // TODO - get this from configuration and allow superseeding via command line parameter
     private final String client;
     private final String topic;  // The producer's Commit ID will map to the Kafka topic
     private final KafkaProducer<String, String> producer;
