@@ -9,6 +9,11 @@ public interface ICLMessageFactory<MessageData> {
      * @return the new message of type ICLMessage<MessageData>
      */
     public ICLMessage<MessageData> createMessage(MessageData data);
+
+    /**
+     * getCommitId retrieves the commit ID the message factory instance is dedicated to. 
+     */
+    public String getCommitId();
 }
 
 

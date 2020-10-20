@@ -46,14 +46,16 @@ class CLProducerCallBack implements Callback {
 
 public class CLProducerThread extends Thread {
     private final static int MSG_NB = 100;
-    private final String topic;
+    private final String client;
+    private final String topic;  // The producer's Commit ID will map to the Kafka topic
     private final KafkaProducer<String, String> producer;
     private final ICLMessageFactory<String> msgFactory;
  
     public CLProducerThread(Properties properties, ICLMessageFactory<String> messageFactory) {
-        this.topic = properties.getProperty("topic");
-        this.producer = new KafkaProducer<String, String>(properties);
+        this.client = properties.getProperty("client.id");
         this.msgFactory = messageFactory;
+        this.topic = messageFactory.getCommitId();
+        this.producer = new KafkaProducer<String, String>(properties);
     }
  
     public void run() {

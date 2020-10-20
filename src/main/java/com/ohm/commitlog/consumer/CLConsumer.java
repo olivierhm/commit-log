@@ -14,7 +14,7 @@ public class CLConsumer {
 
     // TODO - Move these default values to a common module and remove duplication from CLConsumer.
     private static final String TOPIC = "commitlog";
-    private static final String KAFKA_SERVER_URL = "localhost";
+    private static final String KAFKA_SERVER_URL = "172.17.74.66";
     private static final int KAFKA_SERVER_PORT = 9092;
     
     public static void main( String[] args )

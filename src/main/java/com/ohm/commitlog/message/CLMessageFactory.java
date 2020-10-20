@@ -6,7 +6,7 @@ import com.fasterxml.uuid.Generators;
 
 public class CLMessageFactory<MessageData> implements ICLMessageFactory<MessageData> {
 
-    // Each message factory instance is dedicated to a given Commit ID (cid)
+    // Each Commit Log message factory instance is dedicated to a given Commit ID (cid)
     private final String cid;
 
     public CLMessageFactory(String commitId) {
@@ -19,6 +19,10 @@ public class CLMessageFactory<MessageData> implements ICLMessageFactory<MessageD
         return new CLMessage<MessageData>(this.cid, uuid, data);
     }
 
+    // Retrieve the commit ID this message factory is for.
+    public String getCommitId() {
+        return this.cid;
+    }
 }
 
 
